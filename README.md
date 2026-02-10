@@ -37,8 +37,6 @@ Grok-Recruit-Guard/
 5. Add required values in `.env`:
    `DATABASE_URL=...`
    `SESSION_SECRET=...`
-   `GROQ_API_KEY=...`
-   `GEMINI_API_KEY=...`
    `GROK_API_KEY=...`
 6. Start PostgreSQL (optional but recommended):
    `docker compose up -d`
