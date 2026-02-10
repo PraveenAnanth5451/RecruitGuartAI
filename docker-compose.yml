@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:16
+    container_name: recruit-guard-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: recruit_guard
+      POSTGRES_USER: recruit_guard
+      POSTGRES_PASSWORD: recruit_guard_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - recruit_guard_pgdata:/var/lib/postgresql/data
+
+volumes:
+  recruit_guard_pgdata:
+

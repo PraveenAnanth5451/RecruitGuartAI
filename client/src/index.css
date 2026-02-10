@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Sora:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-body: 'Sora', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+
+  /* Unique palette: Aurora (cyan + violet) */
+  --primary: 262 83% 62%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Deep space background */
+  --background: 240 38% 8%;
+  --foreground: 210 40% 98%;
+  
+  --card: 240 38% 10%;
+  --card-foreground: 210 40% 98%;
+  
+  --popover: 240 38% 10%;
+  --popover-foreground: 210 40% 98%;
+  
+  --secondary: 240 28% 16%;
+  --secondary-foreground: 210 40% 98%;
+  
+  --muted: 240 28% 16%;
+  --muted-foreground: 215 20.2% 70%;
+  
+  --accent: 190 95% 40%;
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  /* Custom Status Colors */
+  --success: 142 76% 36%;
+  --success-foreground: 355 100% 97%;
+  
+  --warning: 0 84% 60%;
+  --warning-foreground: 0 0% 100%;
+
+  --border: 240 22% 22%;
+  --input: 240 22% 22%;
+  --ring: 190 95% 40%;
+  
+  --radius: 0.75rem;
+}
+
+.dark {
+  /* Same as :root to keep a consistent dark-first brand */
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased font-body selection:bg-primary/30 selection:text-primary;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight font-bold;
+  }
+}
+
+/* Custom Utilities */
+.glass-panel {
+  @apply bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)];
+}
+
+.glass-card {
+  @apply bg-white/5 dark:bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-cyan-200 to-violet-300;
+}
+
+.verdict-glow-legit {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+  border: 1px solid rgba(34, 197, 94, 0.5);
+}
+
+.verdict-glow-fake {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+}
+
+.scan-line {
+  background: linear-gradient(to bottom, transparent, theme('colors.accent.DEFAULT'), transparent);
+  height: 2px;
+  width: 100%;
+  position: absolute;
+}
+
+/* Ambient background helpers */
+.bg-aurora {
+  background:
+    radial-gradient(800px circle at 10% 10%, rgba(34, 211, 238, 0.18), transparent 55%),
+    radial-gradient(900px circle at 90% 20%, rgba(168, 85, 247, 0.18), transparent 60%),
+    radial-gradient(900px circle at 50% 90%, rgba(59, 130, 246, 0.12), transparent 55%),
+    linear-gradient(180deg, hsl(var(--background)), hsl(var(--background)));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scan,
+  .animate-pulse-slow,
+  .animate-float,
+  .animate-glow {
+    animation: none !important;
+  }
+}
